@@ -22,8 +22,8 @@ class DatePickerWrapper extends React.Component{
       try {
           date = new Date(newValue).toISOString()
           dateStr = date.toString()
-      }catch (e) {
-          console.log(e)
+      }catch (e1) {
+          console.log(e1)
       }
       const e = {
       target: {
