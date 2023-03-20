@@ -17,7 +17,8 @@ class DatePickerWrapper extends React.Component{
   }
 
   onChange = (newValue) => {
-      if (newValue.length!=6){
+    console.log(JSON.stringify(newValue))
+      if (JSON.stringify(newValue) == null){
           return
       }
       let date
