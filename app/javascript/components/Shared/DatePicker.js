@@ -17,7 +17,8 @@ class DatePickerWrapper extends React.Component{
   }
 
   onChange = (newValue) => {
-      if (newValue.length!=6){
+    console.log(JSON.stringify(newValue))
+      if (JSON.stringify(newValue) == "null"){
           return
       }
       let date
@@ -47,7 +48,7 @@ class DatePickerWrapper extends React.Component{
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           label="Choose Date"
-           minDate={today}
+           //minDate={today}
           value={this.state.value}
           onChange={(newValue) => this.onChange(newValue)}
           renderInput={(params) => <TextField {...params} />}
