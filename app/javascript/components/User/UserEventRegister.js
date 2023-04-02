@@ -25,11 +25,7 @@ class UserEventRegister extends Component {
             formData: properties.data.formData !== undefined ? properties.data.formData : properties.talentData,
             status: "",
             message: "",
-            disableSubmit: false,
-            defaultValues: {
-                name: props.properties.data.formData.name,
-                email: props.properties.data.formData.email
-            }
+            disableSubmit: false
         }
         const newUiSchema = {
             "talentName": {
