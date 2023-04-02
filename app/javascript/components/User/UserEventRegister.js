@@ -36,6 +36,7 @@ class UserEventRegister extends Component {
             }
         }
         this.state.uischema = {...this.state.uischema, ...newUiSchema};
+        this.state.formData.talentName = this.state.name;
     }
 
 
