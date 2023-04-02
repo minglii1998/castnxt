@@ -1132,9 +1132,7 @@ export const defaultDataSchema = {
     properties: {
         talentName: {
             title: "Name",
-            type: "string",
-            default: this.state.name //设置默认值为当前用户的姓名
-
+            type: "string"
         },
         gender: {
             title: "Gender",
@@ -1153,9 +1151,7 @@ export const defaultDataSchema = {
         email: {
             title: "Email",
             type: "string",
-            description: "Enter your email address.",
-            default: this.state.email //设置默认值为当前用户的email
-
+            description: "Enter your email address."
         },
         state: {
           title: "State",

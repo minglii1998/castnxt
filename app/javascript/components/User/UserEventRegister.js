@@ -32,10 +32,8 @@ class UserEventRegister extends Component {
     componentDidMount() {
         // 更新状态
         this.setState({
-            defaultValues: {
                 name: this.state.name,
                 email: this.state.email
-            }
         });
     }
     
