@@ -25,9 +25,24 @@ class UserEventRegister extends Component {
             formData: properties.data.formData !== undefined ? properties.data.formData : properties.talentData,
             status: "",
             message: "",
-            disableSubmit: false
+            disableSubmit: false,
+            defaultValues: {
+                name: props.properties.data.formData.name,
+                email: props.properties.data.formData.email
+            }
         }
+        const newUiSchema = {
+            "talentName": {
+                "ui:default": this.state.name
+            },
+            "email": {
+                "ui:default": this.state.email
+            }
+        }
+        this.state.uischema = {...this.state.uischema, ...newUiSchema};
     }
+
+
 
     componentDidMount() {
         // 更新状态
@@ -126,9 +141,7 @@ class UserEventRegister extends Component {
                                   onFormDataChange={(newFormData) => this.setState((prevState) => {
                                       return {
                                           ...prevState,
-                                          formData: newFormData.formData,
-                                          name: prevState.name,
-                                          email: prevState.email
+                                          formData: newFormData.formData
                                       }
                                   })}
                                   formData={this.state.formData}

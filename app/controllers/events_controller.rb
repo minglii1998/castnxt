@@ -121,7 +121,11 @@ class EventsController < ApplicationController
     data[:eventdate] = event.eventdate
     data[:category] = event.category
     data[:is_paid_event] = event.is_paid_event
-    
+
+    data['formData'] = {
+      name: session[:userName],
+      email: session[:userEmail]
+    }
     
     if talent_slide_exists?(eventId, session[:userId])
       slide = get_talent_slide(eventId, session[:userId])
