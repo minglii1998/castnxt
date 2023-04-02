@@ -136,7 +136,7 @@ class EventsController < ApplicationController
     end
    
     
-    @properties = {name: session[:userName],email:session[:email], data: data , talentData: newTalentData}
+    @properties = {name: session[:userName],email:session[:userEmail], data: data , talentData: newTalentData}
   end
   
   def producer_event
