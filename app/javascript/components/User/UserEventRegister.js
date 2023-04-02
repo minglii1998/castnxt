@@ -126,7 +126,9 @@ class UserEventRegister extends Component {
                                   onFormDataChange={(newFormData) => this.setState((prevState) => {
                                       return {
                                           ...prevState,
-                                          formData: newFormData.formData
+                                          formData: newFormData.formData,
+                                          name: prevState.name,
+                                          email: prevState.email
                                       }
                                   })}
                                   formData={this.state.formData}
