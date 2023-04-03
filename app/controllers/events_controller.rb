@@ -57,7 +57,7 @@ class EventsController < ApplicationController
         event = get_event(eventId)
         
         update_event_status(event, params[:status])
-        edit_event(event, params)
+        #edit_event(event, params)
 
         puts("step 1")
         if(params[:status] == "DELETED")
