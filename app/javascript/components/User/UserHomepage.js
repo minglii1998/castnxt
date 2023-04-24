@@ -63,7 +63,7 @@ class UserHomepage extends Component {
 
     handleChange = (e, value) => {
         this.setState({
-            title: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
