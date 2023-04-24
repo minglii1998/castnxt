@@ -13,7 +13,8 @@ import CategoryFilter from "../Filter/CategoryFilter";
 import Button from "@mui/material/Button";
 import LocationFilter from "../Filter/LocationFilter";
 import IsPaidFilter from "../Filter/IsPaidFilter";
-
+import TextField from "@mui/material/TextField";
+import DatePickerWrapper from "../Shared/DatePicker";
 import Header from "../Navbar/Header";
 
 const commonStyle = {marginTop: "20px", marginBottom: "20px"}
@@ -39,6 +40,9 @@ class UserHomepage extends Component {
             categoryFilterTextValue: 'All', 
             stateName: '', 
             cityName: '', 
+            title:'',
+            eventdateStart:'',
+            eventdateEnd:'',
             filteredTableData: properties.acceptingTableData ? properties.acceptingTableData : [], 
             isPaidFilterValue: 'None'
         }
@@ -57,6 +61,12 @@ class UserHomepage extends Component {
         })
     }
 
+    handleChange = (e, value) => {
+        this.setState({
+            title: e.target.value
+        })
+    }
+
     onSubmit = () => {
         let tableDataCopy = this.state.acceptingTableData;
         
@@ -66,6 +76,7 @@ class UserHomepage extends Component {
         let finalFilterValues = categoryFilterValues
         let stateFilterValues = null
         let cityFilterValues = null
+        let titleFilterValues = null
         
         // State Based Filtering
         if(this.state.stateName) {
@@ -88,6 +99,13 @@ class UserHomepage extends Component {
                 finalFilterValues = categoryFilterValues
             }
         }
+
+        // title Based Filtering
+        if(this.state.title) {
+            finalFilterValues = finalFilterValues.filter((event) => {
+                    return event.title === this.state.title
+                })
+            }
         
         // IsPaid Based Filtering
         finalFilterValues = finalFilterValues.filter((event) => this.state.isPaidFilterValue === 'None' ? true: this.state.isPaidFilterValue === event.ispaid)
@@ -220,6 +238,12 @@ class UserHomepage extends Component {
                                 
                                 <div><b>Category Filter</b></div>
                                 <CategoryFilter categoryFilterValueSelected = {this.onCategoryFilterValueSelected}></CategoryFilter>
+
+                            
+                                <DatePickerWrapper id='eventdateStart' name='eventdateStart' variant='outlined' onChange={this.handleChange} value={this.state.eventdateStart} style={commonStyle} />
+                                <DatePickerWrapper id='eventdateEnd' name='eventdateEnd' variant='outlined' onChange={this.handleChange} value={this.state.eventdateEnd} style={commonStyle} />
+
+                                <TextField fullWidth={true} id="title-textfield" name="title" label="Event title" variant="outlined" onChange={this.handleChange} value={this.state.title}/>
                                 <LocationFilter handleLocationFilterChange = {this.handleLocationFilterChange}></LocationFilter>
                                 <div><b>Is the event paid ?</b></div>
                                 <IsPaidFilter isPaidFilterSelected = {this.onIsPaidFilterSelected}></IsPaidFilter>
