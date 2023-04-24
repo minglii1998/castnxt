@@ -103,9 +103,17 @@ class UserHomepage extends Component {
         // title Based Filtering
         if(this.state.title) {
             finalFilterValues = finalFilterValues.filter((event) => {
-                    return event.title === this.state.title
-                })
-            }
+                return event.title === this.state.title
+            })
+        }
+
+        if(this.state.eventdateStart) {
+
+        }
+
+        if(this.state.eventdateEnd) {
+
+        }
         
         // IsPaid Based Filtering
         finalFilterValues = finalFilterValues.filter((event) => this.state.isPaidFilterValue === 'None' ? true: this.state.isPaidFilterValue === event.ispaid)
