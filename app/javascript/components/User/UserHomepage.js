@@ -17,6 +17,8 @@ import TextField from "@mui/material/TextField";
 import DatePickerWrapper from "../Shared/DatePicker";
 import Header from "../Navbar/Header";
 import FormControl from "@mui/material/FormControl";
+import DatePickerWrapperStart from "../Shared/DatePicker";
+import DatePickerWrapperEnd from "../Shared/DatePicker";
 
 const commonStyle = {marginTop: "20px", marginBottom: "20px"}
 
@@ -253,8 +255,8 @@ class UserHomepage extends Component {
                                 <div><b>Category Filter</b></div>
                                 <CategoryFilter categoryFilterValueSelected = {this.onCategoryFilterValueSelected}></CategoryFilter>
                                 <FormControl fullWidth>
-                                <DatePickerWrapper label='Start Date' id='eventdateStart' name='eventdateStart' variant='outlined' onChange={this.handleChange} value={this.state.eventdateStart} style={commonStyle} />
-                                <DatePickerWrapper label='End Date' id='eventdateEnd' name='eventdateEnd' variant='outlined' onChange={this.handleChange} value={this.state.eventdateEnd} style={commonStyle} />
+                                <DatePickerWrapperStart id='eventdateStart' name='eventdateStart' variant='outlined' onChange={this.handleChange} value={this.state.eventdateStart} style={commonStyle} />
+                                <DatePickerWrapperEnd id='eventdateEnd' name='eventdateEnd' variant='outlined' onChange={this.handleChange} value={this.state.eventdateEnd} style={commonStyle} />
                                 </FormControl>
                                 <FormControl fullWidth>
                                 <TextField  id="title-textfield" name="title" label="Event title" variant="outlined" onChange={this.handleChange} value={this.state.title}/>
