@@ -104,7 +104,7 @@ class UserHomepage extends Component {
         // title Based Filtering
         if(this.state.title) {
             finalFilterValues = finalFilterValues.filter((event) => {
-                    return event.titleincludes(this.state.title)
+                    return event.title.includes(this.state.title)
                 })
             }
         if (this.state.eventdateStart) {
