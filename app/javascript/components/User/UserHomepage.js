@@ -14,11 +14,10 @@ import Button from "@mui/material/Button";
 import LocationFilter from "../Filter/LocationFilter";
 import IsPaidFilter from "../Filter/IsPaidFilter";
 import TextField from "@mui/material/TextField";
-import DatePickerWrapper from "../Shared/DatePicker";
 import Header from "../Navbar/Header";
 import FormControl from "@mui/material/FormControl";
-import DatePickerWrapperStart from "../Shared/DatePicker";
-import DatePickerWrapperEnd from "../Shared/DatePicker";
+import DatePickerWrapperStart from "../Shared/DatePickerStart";
+import DatePickerWrapperEnd from "../Shared/DatePickerEnd";
 
 const commonStyle = {marginTop: "20px", marginBottom: "20px"}
 
