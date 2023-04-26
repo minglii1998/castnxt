@@ -104,24 +104,9 @@ class UserHomepage extends Component {
         // title Based Filtering
         if(this.state.title) {
             finalFilterValues = finalFilterValues.filter((event) => {
-                    return event.title.includes(this.state.title)
+                    return event.title === this.state.title
                 })
             }
-                    // title Based Filtering
-                    if (this.state.eventdateStart) {
-                        const startDate = new Date(this.state.eventdateStart);
-                        finalFilterValues = finalFilterValues.filter((event) => {
-                          const eventDate = new Date(event.date);
-                          return eventDate.getTime() >= startDate.getTime();
-                        });
-                      }
-                      if (this.state.eventdateEnd) {
-                        const endDate = new Date(this.state.eventdateEnd);
-                        finalFilterValues = finalFilterValues.filter((event) => {
-                          const eventDate = new Date(event.date);
-                          return eventDate.getTime() <= endDate.getTime();
-                        });
-                      }
         
         // IsPaid Based Filtering
         finalFilterValues = finalFilterValues.filter((event) => this.state.isPaidFilterValue === 'None' ? true: this.state.isPaidFilterValue === event.ispaid)
