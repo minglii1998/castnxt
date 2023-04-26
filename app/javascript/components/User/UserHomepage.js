@@ -16,6 +16,7 @@ import IsPaidFilter from "../Filter/IsPaidFilter";
 import TextField from "@mui/material/TextField";
 import DatePickerWrapper from "../Shared/DatePicker";
 import Header from "../Navbar/Header";
+import FormControl from "@mui/material/FormControl";
 
 const commonStyle = {marginTop: "20px", marginBottom: "20px"}
 
@@ -63,7 +64,7 @@ class UserHomepage extends Component {
 
     handleChange = (e, value) => {
         this.setState({
-            title: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -103,9 +104,24 @@ class UserHomepage extends Component {
         // title Based Filtering
         if(this.state.title) {
             finalFilterValues = finalFilterValues.filter((event) => {
-                    return event.title === this.state.title
+                    return event.title.includes(this.state.title)
                 })
             }
+                    // title Based Filtering
+                    if (this.state.eventdateStart) {
+                        const startDate = new Date(this.state.eventdateStart);
+                        finalFilterValues = finalFilterValues.filter((event) => {
+                          const eventDate = new Date(event.date);
+                          return eventDate.getTime() >= startDate.getTime();
+                        });
+                      }
+                      if (this.state.eventdateEnd) {
+                        const endDate = new Date(this.state.eventdateEnd);
+                        finalFilterValues = finalFilterValues.filter((event) => {
+                          const eventDate = new Date(event.date);
+                          return eventDate.getTime() <= endDate.getTime();
+                        });
+                      }
         
         // IsPaid Based Filtering
         finalFilterValues = finalFilterValues.filter((event) => this.state.isPaidFilterValue === 'None' ? true: this.state.isPaidFilterValue === event.ispaid)
@@ -238,12 +254,13 @@ class UserHomepage extends Component {
                                 
                                 <div><b>Category Filter</b></div>
                                 <CategoryFilter categoryFilterValueSelected = {this.onCategoryFilterValueSelected}></CategoryFilter>
-
-                            
-                                <DatePickerWrapper id='eventdateStart' name='eventdateStart' variant='outlined' onChange={this.handleChange} value={this.state.eventdateStart} style={commonStyle} />
-                                <DatePickerWrapper id='eventdateEnd' name='eventdateEnd' variant='outlined' onChange={this.handleChange} value={this.state.eventdateEnd} style={commonStyle} />
-
-                                <TextField fullWidth={true} id="title-textfield" name="title" label="Event title" variant="outlined" onChange={this.handleChange} value={this.state.title}/>
+                                <FormControl fullWidth>
+                                <DatePickerWrapper label='Start Date' id='eventdateStart' name='eventdateStart' variant='outlined' onChange={this.handleChange} value={this.state.eventdateStart} style={commonStyle} />
+                                <DatePickerWrapper label='End Date' id='eventdateEnd' name='eventdateEnd' variant='outlined' onChange={this.handleChange} value={this.state.eventdateEnd} style={commonStyle} />
+                                </FormControl>
+                                <FormControl fullWidth>
+                                <TextField  id="title-textfield" name="title" label="Event title" variant="outlined" onChange={this.handleChange} value={this.state.title}/>
+                                </FormControl>
                                 <LocationFilter handleLocationFilterChange = {this.handleLocationFilterChange}></LocationFilter>
                                 <div><b>Is the event paid ?</b></div>
                                 <IsPaidFilter isPaidFilterSelected = {this.onIsPaidFilterSelected}></IsPaidFilter>
